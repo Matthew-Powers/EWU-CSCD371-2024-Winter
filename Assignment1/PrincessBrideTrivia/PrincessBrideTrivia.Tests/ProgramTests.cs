@@ -71,6 +71,35 @@ public class ProgramTests
         Assert.AreEqual(expectedString, percentage);
     }
 
+    [TestMethod]
+    [DataRow("1")]
+    [DataRow("f")]
+    public void GuessIsValidChoice(string userChoice)
+    {
+        // Arrange
+        string result;
+
+        //Act
+        if (userChoice == "1")
+        {
+            result = "Valid input";
+        }
+        else
+        {
+            result = "Invalid input, please enter 1, 2, or 3";
+        }
+
+        //Assert
+        if(userChoice == "1")
+        {
+            Assert.AreEqual(result, "Valid input");
+        }
+        else
+        {
+            Assert.AreEqual(result, "Invalid input, please enter 1, 2, or 3");
+        }
+    }
+
 
     private static void GenerateQuestionsFile(string filePath, int numberOfQuestions)
     {

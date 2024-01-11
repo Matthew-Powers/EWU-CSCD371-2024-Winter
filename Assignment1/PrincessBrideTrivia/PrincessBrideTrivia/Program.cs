@@ -21,7 +21,7 @@ public class Program
 
     public static string GetPercentCorrect(int numberCorrectAnswers, int numberOfQuestions)
     {
-        return Math.Truncate((decimal)numberCorrectAnswers / numberOfQuestions * 100) + "%";
+        return (1.0 * numberCorrectAnswers / numberOfQuestions * 100) + "%";
     }
 
     public static bool AskQuestion(Question question)
@@ -29,7 +29,16 @@ public class Program
         DisplayQuestion(question);
 
         string userGuess = GetGuessFromUser();
-        return DisplayResult(userGuess, question);
+        if(userGuess == "1" || userGuess == "2" || userGuess == "3")
+        {
+            return DisplayResult(userGuess, question);
+        }
+        else
+        {
+            Console.WriteLine("Invalid input, please enter 1, 2, or 3");
+            AskQuestion(question);
+        }
+        return false;
     }
 
     public static string GetGuessFromUser()
